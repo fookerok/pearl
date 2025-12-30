@@ -1,8 +1,8 @@
 <template>
-	<div class="card__item grid grid-rows-[auto_auto_1fr_auto] gap-2.5 h-full">
-		<div class="card__img">
-			<img :src="`/src/assets/img/cards/${nameImg}`" alt="">
-		</div>
+	<a :href="href" class="card__item grid grid-rows-[auto_auto_1fr_auto] gap-2.5 h-full">
+	<div class="card__img">
+		<img :src="imageUrl" alt="">
+    </div>
 		<div class="card__type">{{typeName}}</div>
 		<div class="card__name">{{ cardName }}</div>
 		<div class="card__date">{{ cardDate }}</div>
@@ -10,14 +10,14 @@
 			Подробнее
 			<SvgIcon w="8px" h="10px" class="svg-social svg-link" icon="#link"/>
 		</a>
-	</div>
+	</a>
 </template>
 
 <script>
 	export default {
 		name: 'CardInfo',
 		props: {
-			nameImg: {
+			imageUrl: {
 				type: String,
 				required: true
 			},

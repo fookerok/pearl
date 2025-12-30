@@ -7,11 +7,11 @@
 				</TitleSection>
 			</div>
 			<div class="grid grid-cols-3 gap-4 gap-y-[50px]">
-				<CardMenu href="#" nameImg="1-card-menu.webp">Косметология <br>по телу</CardMenu>
-				<CardMenu href="#" nameImg="2-card-menu.webp">Косметология <br>для подростков</CardMenu>
-				<CardMenu href="#" nameImg="3-card-menu.webp">Косметология <br>для мужчин</CardMenu>
-				<CardMenu href="#" nameImg="4-card-menu.webp">Подарочные <br>сертификаты</CardMenu>
-				<CardMenu href="#" nameImg="5-card-menu.webp">Косметология <br>по лицу</CardMenu>
+				<CardMenu href="#" nameImg="cardsMenu/1-card-menu.webp">Косметология <br>по телу</CardMenu>
+				<CardMenu href="#" nameImg="cardsMenu/2-card-menu.webp">Косметология <br>для подростков</CardMenu>
+				<CardMenu href="#" nameImg="cardsMenu/3-card-menu.webp">Косметология <br>для мужчин</CardMenu>
+				<CardMenu href="#" nameImg="cardsMenu/4-card-menu.webp">Подарочные <br>сертификаты</CardMenu>
+				<CardMenu href="#" nameImg="cardsMenu/5-card-menu.webp">Косметология <br>по лицу</CardMenu>
 			</div>
 			<BtnLink class="flex justify-center" href="#">Записаться на прием</BtnLink>
 		</div>

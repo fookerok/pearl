@@ -1,6 +1,6 @@
 <template>
 	<a :href="href" class="card-menu__item">
-		<img :src="`/src/assets/img/cardsMenu/${nameImg}`" alt="">
+		<img :src="nameImg" alt="">
 		<div class="card-menu__name uppercase text-center w-100">
 			<slot></slot>
 		</div>
