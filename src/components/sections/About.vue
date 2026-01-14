@@ -1,6 +1,6 @@
 <template>
 	<section class="about-section">
-		<div class="flex">
+		<div class="flex crooked-card">
 			<div class="info-block">
 				<h2 class="info-block__title">О клинике</h2>
 				<div class="line"></div>
@@ -25,13 +25,16 @@
 
 <style lang="scss" scoped>
 .img-block{
-	z-index:2;
-	margin-right: -50px;
-	right: 50px;
+	z-index: 2;
+	@media (min-width: 1200px){
+		img{
+			min-height: 500px;
+		}
+	}
 }
 .info-block{
 	position: relative;
-	padding: 40px 50px;
+	padding: 40px 100px 50px 50px;
 	margin-right: -50px;
 	margin-bottom: 50px;
 	background-color: $light;
@@ -42,6 +45,25 @@
 		text-transform: uppercase;
 		font-size: 2.125rem;
 		color: $primary;
+	}
+}
+
+@media (max-width: 1200px){
+	.crooked-card{
+		flex-direction: column;
+	}
+	.img-block{
+		display: flex;
+		justify-content: center;
+		margin: 0;
+	}
+	.info-block{
+		order: 2;
+		margin: 0 auto;
+		position: static;
+		max-width: 588px;
+		width: auto;
+		padding: 20px;
 	}
 }
 </style>

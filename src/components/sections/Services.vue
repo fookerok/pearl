@@ -6,7 +6,7 @@
 					Виды процедур, продолжительность курсов, необходимость коррекции&nbsp;&mdash; подбираются индивидуально для каждого пациента.
 				</TitleSection>
 			</div>
-			<div class="grid grid-cols-3 gap-4 gap-y-[50px]">
+			<div class="card-menu__list grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-y-12.5 gap-y-4">
 				<CardMenu href="#" nameImg="cardsMenu/1-card-menu.webp">Косметология <br>по телу</CardMenu>
 				<CardMenu href="#" nameImg="cardsMenu/2-card-menu.webp">Косметология <br>для подростков</CardMenu>
 				<CardMenu href="#" nameImg="cardsMenu/3-card-menu.webp">Косметология <br>для мужчин</CardMenu>

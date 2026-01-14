@@ -16,7 +16,7 @@
 <style lang="scss" scoped>
 .discription__section{
 	background-color: $primary;
-	padding: 70px 0;
+	padding: 70px 20px;
 	.discr-container{
 		max-width: 792px;
 		margin: 0 auto;

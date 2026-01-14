@@ -68,6 +68,7 @@
 
 	section{
 		margin-top: 50px;
+		padding: 0 20px;
 	}
 
 	.line{
@@ -75,5 +76,38 @@
 		background-color: $primary;
 		margin: 20px 0;
 		height: 2px;
+	}
+
+	@media (max-width: 991px) {
+		.card__list {
+			display: flex;
+			overflow-x: auto;
+			-ms-overflow-style: none; 
+			scrollbar-width: none;
+			&::-webkit-scrollbar {
+				display: none;         
+			}
+		}
+		.card__item{
+			width: 350px;
+			flex: 0 0 auto; 
+			.card__name{
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				height: 50px;
+			}
+		}
+	}
+
+	@media (max-width: 576px){
+		.card__item{
+			width: 200px;
+		}
+		.card-menu__list{
+			grid-template-columns: repeat(1, minmax(0, 1fr));
+		}
 	}
 </style>

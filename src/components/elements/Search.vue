@@ -22,6 +22,15 @@
 </script>
 
 <style lang="scss" scoped>
+	@media (max-width: 576px){
+		.site-search{
+			flex-wrap: wrap;
+			.btn{
+				width: 470px;
+			}
+		}
+	}
+
 	.search-wrapper{
 		background-color: white;
 		border-radius: 5px;

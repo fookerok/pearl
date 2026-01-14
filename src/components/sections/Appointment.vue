@@ -3,7 +3,7 @@
 		<div class="container text-center">
 			<div class="flex flex-col gap-2.5 !mb-[15px]">
 				<h5 class="title">Запишитесь на первичный прием врача по телефону:</h5>
-				<div class="number__list flex justify-center">
+				<div class="number__list flex justify-center md:flex-row flex-col md:gap-15.5">
 					<a href="tel:+74966164799" class="number__link">+7 496 616-47-99</a>
 					<a href="tel:+79161193086" class="number__link">+7 916 119-30-86</a>
 				</div>
@@ -27,7 +27,7 @@
 	.number__list {
 		display: flex;
 		justify-content: center;
-		gap: 62px;
+		text-wrap: nowrap;
 		align-items: center;
 		position: relative;
 		font-size: 2.1875rem;
@@ -40,7 +40,10 @@
 		height: 8px;
 		background-color: $primary;
 		border-radius: 50%;
-		top: 50%; 
+		top: 50%;
+		@media (max-width: 767px) {
+			display: none;
+		} 
 	}
 }
 </style>

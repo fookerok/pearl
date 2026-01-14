@@ -1,6 +1,6 @@
 <template>
 	<section class="ourspecialists-section">
-		<div class="flex">
+		<div class="crooked-card flex">
 			<div class="img-block">
 				<img src="/src/assets/img/our-specialists.webp" alt="">
 			</div>
@@ -25,6 +25,13 @@
 </script>
 
 <style lang="scss" scoped>
+.img-block{
+	@media (min-width: 1200px){
+		img{
+			min-height: 500px;
+		}
+	}
+}
 .info-block{
 	position: relative;
 	padding: 40px 50px;
@@ -38,6 +45,23 @@
 		text-transform: uppercase;
 		font-size: 2.125rem;
 		color: $primary;
+	}
+}
+
+@media (max-width: 1200px){
+	.crooked-card{
+		flex-direction: column;
+	}
+	.img-block{
+		display: flex;
+		justify-content: center;
+	}
+	.info-block{
+		margin: 0 auto;
+		position: static;
+		max-width: 588px;
+		width: auto;
+		padding: 20px;
 	}
 }
 
