@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Vue 3 + Vite
 npm run dev
 
@@ -7,4 +7,3 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
 =======
 # pearl
->>>>>>> 501177c9e9c86d9cea35cac042183d42b224a6bf
