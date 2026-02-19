@@ -1,0 +1,38 @@
+---
+import '../styles/global.scss';
+import '../styles/global.css';
+import '@fontsource/open-sans/400.css';
+import "@fontsource/open-sans/500.css";
+import "@fontsource/open-sans/600.css";
+import "@fontsource/open-sans/700.css";
+
+import ElHeader from '../components/elements/ElHeader.vue';
+import ElFooter from '../components/elements/ElFooter.vue';
+
+interface Props {
+    title?: string;
+}
+const { title = "Default Title" } = Astro.props;
+---
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" href="favicon.png"/>
+        <title>{title}</title>
+    </head>
+    <body>
+        <div class="app">
+            <ElHeader client:only="vue" /> 
+            <main class="main">
+                <slot />
+            </main>
+            <ElFooter/>
+        </div>
+
+        <script>
+            import 'virtual:svg-icons-register';
+        </script>
+    </body>
+</html>

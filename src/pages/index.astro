@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/Layout.astro';
+import MainPage from '../components/pages/Main.vue';
+import Carousel from '../components/elements/Carousel.vue';
+---
+
+<BaseLayout title="Добро пожаловать">
+	<Carousel client:only="vue" />
+	<MainPage />
+</BaseLayout>

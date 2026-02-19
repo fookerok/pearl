@@ -1,0 +1,33 @@
+{
+  "name": "pearl-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/vue": "^5.1.4",
+    "@fancyapps/ui": "^6.1.10",
+    "@fontsource/montserrat": "^5.2.8",
+    "@fontsource/open-sans": "^5.2.7",
+    "@splidejs/vue-splide": "^0.6.12",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.17.1",
+    "astro-auto-import": "^0.5.1",
+    "fast-glob": "^3.3.3",
+    "swiper": "^12.1.1",
+    "tailwindcss": "^4.1.18",
+    "vue": "^3.5.28",
+    "vue3-carousel": "^0.17.0"
+  },
+  "devDependencies": {
+    "@sjtu-nic/vite-plugins": "^0.0.10",
+    "js-beautify": "^1.15.4",
+    "sass": "^1.97.3",
+    "vite-plugin-svg-icons": "^2.0.1",
+    "vite-plugin-svg-sprite": "^0.7.0"
+  }
+}
