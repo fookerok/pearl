@@ -6,13 +6,30 @@ import "@fontsource/open-sans/500.css";
 import "@fontsource/open-sans/600.css";
 import "@fontsource/open-sans/700.css";
 
-import ElHeader from '../components/elements/ElHeader.vue';
+// ИМПОРТИРУЕМ ВСЕ ТВОИ КОМПОНЕНТЫ
+import SocialList from '../components/UI/SocialList.vue';
+import BtnLink from '../components/UI/BtnLink.vue';
+import SvgIcon from '../components/UI/SvgIcon.vue';
 import ElFooter from '../components/elements/ElFooter.vue';
+
+// Логотип
+import logoImg from '../assets/img/main/logo.webp';
 
 interface Props {
     title?: string;
 }
 const { title = "Default Title" } = Astro.props;
+
+const baseUrl = import.meta.env.BASE_URL;
+const menu = [
+    { item: 'Наши специалисты', link: 'specialists' },
+    { item: 'Услуги', link: 'services' },
+    { item: 'Новости и акции', link: 'news' },
+    { item: 'Отзывы', link: 'reviews' },
+    { item: 'Фотогалерея', link: 'gallery' },
+    { item: 'Контакты', link: 'contacts' },
+    { item: 'Лицензия', link: 'license' }
+];
 ---
 <!doctype html>
 <html lang="ru">
@@ -24,15 +41,268 @@ const { title = "Default Title" } = Astro.props;
     </head>
     <body>
         <div class="app">
-            <ElHeader client:only="vue" /> 
+            <header class="flex header justify-between items-center">
+                <div class="left__header">
+                    <h1 class="title !mb-2 text-center">
+                        Центр эстетической <br>косметологии «Жемчужина»
+                    </h1>
+                    <SocialList class="justify-center"/>
+                </div>
+
+                <div class="middle__header">
+                    <a href={baseUrl}>
+                        <img src={logoImg.src} alt="логотип" width="150">
+                    </a>
+                </div>
+
+                <div class="right__header items-center flex gap-[30px]">
+                    <div class="flex flex-col text-center">
+                        <a class="number-link" href="tel:+74966164799">+7 496 616-47-99</a>
+                        <a class="number-link" href="tel:+79161193086">+7 916 119-30-86</a>
+                        г. Коломна, ул. Гражданская 10
+                    </div>
+                    <div class="block">
+                        <BtnLink href="/">Записаться</BtnLink>
+                    </div>
+                </div>
+
+                <button class="burger" id="burger-btn">
+                    <div id="burger-icon-container">
+                         <SvgIcon w="32px" h="32px" class="svg-burger open-icon" icon="#open"/>
+                         <SvgIcon w="32px" h="32px" class="svg-burger close-icon hidden" icon="#close"/>
+                    </div>
+                </button>
+            </header>
+
+            <nav class="nav" id="desktop-nav">
+                <ul class="nav__list flex justify-between container">
+                    {menu.map(item => (
+                        <li><a href={baseUrl + item.link} class="nav__link">{item.item}</a></li>
+                    ))}
+                </ul>
+            </nav>
+
+            <div id="overlay" class="overlay"></div>
+            <div id="mobile-menu" class="mobile-menu flex flex-col">
+                <ul class="mobile-nav">
+                    {menu.map(item => (
+                        <li class="mobile-nav__item"><a href={baseUrl + item.link} class="nav__link">{item.item}</a></li>
+                    ))}
+                </ul>
+                <div class="mobile-contacts">
+                    <SocialList />
+                    <div class="flex flex-col !mb-4">
+                        <a class="font-bold" href="tel:+74966164799">+7 496 616-47-99</a>
+                        <a class="font-bold" href="tel:+79161193086">+7 916 119-30-86</a>
+                        <p>г. Коломна, ул. Гражданская 10</p>
+                    </div> 
+                    <BtnLink href="/">Записаться</BtnLink>
+                </div>
+            </div>
+
             <main class="main">
                 <slot />
             </main>
-            <ElFooter/>
+            
+            <ElFooter />
         </div>
 
         <script>
+            // ЛОГИКА НА ЧИСТОМ JS (оживляем статичные компоненты)
             import 'virtual:svg-icons-register';
+
+            const burger = document.getElementById('burger-btn');
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('overlay');
+            const nav = document.getElementById('desktop-nav');
+            const openIcon = document.querySelector('.open-icon');
+            const closeIcon = document.querySelector('.close-icon');
+
+            function toggle() {
+                const isActive = menu.classList.toggle('active');
+                overlay.classList.toggle('active');
+                
+                // Переключаем видимость иконок
+                openIcon?.classList.toggle('hidden');
+                closeIcon?.classList.toggle('hidden');
+                
+                document.body.style.overflow = isActive ? 'hidden' : '';
+            }
+
+            burger?.addEventListener('click', toggle);
+            overlay?.addEventListener('click', toggle);
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY >= 100) nav?.classList.add('nav--fixed');
+                else nav?.classList.remove('nav--fixed');
+            });
         </script>
     </body>
 </html>
+
+
+<style lang="scss" is:global>
+
+.header{
+	height: 100px;
+	max-width: 1720px;
+	padding: 0 20px 10px 20px;
+	margin: 0 auto;
+	position: relative;
+.title{
+		font-size: 0.8125rem;
+		line-height: 1.2;
+	}
+}
+
+.number-link{
+	font-weight: 500;
+}
+
+.right__header{
+	font-size: 0.875rem;
+}
+
+.nav{
+	gap: 60px;
+	border-top: 1px solid $border;
+	padding: 20px;
+	text-transform: uppercase;
+	font-size: 0.875rem;
+	color: black;
+
+	ul li:hover{
+		color: lighten(black, 70%);
+		transition: color .2s ease;
+	}
+}
+
+.desktop-only {
+	display: block;
+}
+
+.burger {
+	display: none;
+	flex-direction: column;
+	gap: 5px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 1002;
+}
+
+.overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.6);
+	z-index: 1000;
+}
+
+/* 1. ОВЕРЛЕЙ */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    /* Скрываем по умолчанию */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+
+    &.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+/* 2. МОБИЛЬНОЕ МЕНЮ */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* ПРЯЧЕМ ЗА ЭКРАН (было 0) */
+    width: 85vw;
+    max-width: 320px;
+    height: 100vh;
+    background: #fff;
+    z-index: 1001;
+    padding: 25px;
+    overflow-y: auto;
+    display: flex; /* Чтобы работала колонка */
+    flex-direction: column;
+    /* Анимация выезда вместо Vue transition */
+    transition: right 0.3s ease; 
+
+    &.active {
+        right: 0; /* Выезжаем при клике */
+    }
+}
+
+.mobile-nav {
+	display: flex;
+	flex-direction: column;
+	margin: 25px 0;
+	&__item{
+		padding: 12px 0;
+		border-bottom: 1px solid #eee;
+		text-transform: uppercase;
+		font-size: 0.875rem;
+	}
+}
+
+.mobile-contacts {
+	margin-top: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-size: 0.875rem;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+	transition: transform 0.3s ease;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+	transform: translateX(100%);
+}
+
+@media (max-width: 981px) {
+	.left__header,
+	.right__header,
+	.nav {
+		display: none !important;
+	}
+
+	.middle__header img {
+		max-height: 70px;
+	}
+
+	.burger {
+		display: flex;
+	}
+}
+
+.svg-burger{
+	stroke: $primary;
+	stroke-width: 1.5;
+}
+
+.nav {
+	transition: all 0.7s ease;
+}
+
+.nav--fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+	background: white;
+	box-shadow: 0 10px 12px rgba(0,0,0,0.08);
+}
+</style>
