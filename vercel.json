@@ -1,0 +1,5 @@
+{
+	"rewrites": [
+		{ "source": "/jemchujina/(.*)", "destination": "/$1" }
+	]
+}
