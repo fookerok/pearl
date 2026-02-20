@@ -1,13 +1,10 @@
 {
   "rewrites": [
-    {
+	{
       "source": "/jemchujina",
       "destination": "/index.html"
     },
-    {
-      "source": "/jemchujina/:path((?!.*\\.).*)",
-      "destination": "/:path.html"
-    }
+    { "source": "/jemchujina/(.*)", "destination": "/:path.html" }
   ],
   "redirects": [
     { "source": "/jemchujina", "destination": "/", "permanent": true }
