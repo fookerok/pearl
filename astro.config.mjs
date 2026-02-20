@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
     output: "static",
     trailingSlash: "always",
-    base: '/jemchujina/',
+    base: '/',
     build: {
         format: 'file'
     },
