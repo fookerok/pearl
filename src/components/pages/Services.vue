@@ -6,7 +6,7 @@
                 <a
                     v-for="service in services"
                     :key="service.link"
-                    :href="baseUrl + service.link"
+                    :href="baseUrl + service.link + '.html'"
                     class="type-service"
                 >
                     {{ service.title }}
