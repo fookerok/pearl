@@ -1,8 +1,12 @@
 {
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/$1.html"
-    }
-  ]
+	"rewrites": [
+		{
+		"source": "/jemchujina",
+		"destination": "/jemchujina/index.html"
+		},
+		{
+		"source": "/jemchujina/:path*",
+		"destination": "/jemchujina/:path*.html"
+		}
+	]
 }
