@@ -5,6 +5,8 @@ import { createSvgIconsPlugin } from '@sjtu-nic/vite-plugins/svg-icons';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+    output: "static",
+    trailingSlash: "always",
     base: '/jemchujina/',
     build: {
         format: 'file'
