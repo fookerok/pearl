@@ -6,13 +6,11 @@ import "@fontsource/open-sans/500.css";
 import "@fontsource/open-sans/600.css";
 import "@fontsource/open-sans/700.css";
 
-// ИМПОРТИРУЕМ ВСЕ ТВОИ КОМПОНЕНТЫ
 import SocialList from '../components/UI/SocialList.vue';
 import BtnLink from '../components/UI/BtnLink.vue';
 import SvgIcon from '../components/UI/SvgIcon.vue';
 import ElFooter from '../components/elements/ElFooter.vue';
 
-// Логотип
 import logoImg from '../assets/img/main/logo.webp';
 
 interface Props {
@@ -22,6 +20,7 @@ const { title = "Default Title" } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
 const menu = [
+    { item: 'О нас', link: 'about' },
     { item: 'Наши специалисты', link: 'specialists' },
     { item: 'Услуги', link: 'services' },
     { item: 'Новости и акции', link: 'news' },
@@ -68,8 +67,8 @@ const menu = [
 
                 <button class="burger" id="burger-btn">
                     <div id="burger-icon-container">
-                         <SvgIcon w="32px" h="32px" class="svg-burger open-icon" icon="#open"/>
-                         <SvgIcon w="32px" h="32px" class="svg-burger close-icon hidden" icon="#close"/>
+                        <SvgIcon w="32px" h="32px" class="svg-burger open-icon" icon="#open"/>
+                        <SvgIcon w="32px" h="32px" class="svg-burger close-icon hidden" icon="#close"/>
                     </div>
                 </button>
             </header>
@@ -108,7 +107,6 @@ const menu = [
         </div>
 
         <script>
-            // ЛОГИКА НА ЧИСТОМ JS (оживляем статичные компоненты)
             import 'virtual:svg-icons-register';
 
             const burger = document.getElementById('burger-btn');
@@ -121,8 +119,6 @@ const menu = [
             function toggle() {
                 const isActive = menu.classList.toggle('active');
                 overlay.classList.toggle('active');
-                
-                // Переключаем видимость иконок
                 openIcon?.classList.toggle('hidden');
                 closeIcon?.classList.toggle('hidden');
                 
@@ -139,7 +135,6 @@ const menu = [
         </script>
     </body>
 </html>
-
 
 <style lang="scss" is:global>
 
@@ -196,19 +191,10 @@ const menu = [
 }
 
 .overlay {
-	position: fixed;
-	inset: 0;
-	background: rgba(0, 0, 0, 0.6);
-	z-index: 1000;
-}
-
-/* 1. ОВЕРЛЕЙ */
-.overlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
     z-index: 1000;
-    /* Скрываем по умолчанию */
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -219,11 +205,10 @@ const menu = [
     }
 }
 
-/* 2. МОБИЛЬНОЕ МЕНЮ */
 .mobile-menu {
     position: fixed;
     top: 0;
-    right: -100%; /* ПРЯЧЕМ ЗА ЭКРАН (было 0) */
+    right: -100%;
     width: 85vw;
     max-width: 320px;
     height: 100vh;
@@ -231,13 +216,12 @@ const menu = [
     z-index: 1001;
     padding: 25px;
     overflow-y: auto;
-    display: flex; /* Чтобы работала колонка */
+    display: flex;
     flex-direction: column;
-    /* Анимация выезда вместо Vue transition */
     transition: right 0.3s ease; 
 
     &.active {
-        right: 0; /* Выезжаем при клике */
+        right: 0;
     }
 }
 
