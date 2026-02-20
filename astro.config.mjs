@@ -18,6 +18,7 @@ export default defineConfig({
         }),
     ],
     vite: {
+        assetsDir: "jemchujina/assets",
         plugins: [
             createSvgIconsPlugin({
                 iconDirs: [path.resolve(process.cwd(), './src/assets/svg')],
