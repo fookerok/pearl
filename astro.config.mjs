@@ -22,7 +22,9 @@ export default defineConfig({
                 inject: 'body-last',
                 symbolId: '[name]',
             }),
-            tailwindcss()
+            tailwindcss({
+
+            })
         ],
         css: {
             preprocessorOptions: {

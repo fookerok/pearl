@@ -11,8 +11,7 @@
 			<div class="!p-3">
 				<div class="card__type">{{item.typeName}}</div>
 				<div class="card__name">{{ item.cardName }}</div>
-				<div class="card__date">{{ item.cardDate }}</div>
-				<btnLink class="cursor-pointer card__link flex items-center gap-2.5">
+				<btnLink class="cursor-pointer card__link flex items-center gap-2.5 !mt-2">
 					Подробнее
 				</btnLink>
 			</div>
@@ -26,52 +25,39 @@ const photos = Object.values(import.meta.glob('../../assets/img/specialists/*.jp
 const specialists = [
     {
         id: 1,
-        imageUrl: photos[0],
-        typeName: 'Основатель центра',
-        cardName: 'Коршунова Ольга Николаевна',
-        cardDate: 'Стаж работы 15 лет'
-    },
-    {
-        id: 2,
         imageUrl: photos[1],
         typeName: 'Главный врач',
         cardName: 'Морщинская Елена Александровна',
-        cardDate: 'Стаж работы 15 лет'
     },
     {
-        id: 3,
+        id: 2,
         imageUrl: photos[2],
         typeName: 'Врач косметолог-дерматовенеролог',
         cardName: 'Васильева Ирина Игоревна',
-        cardDate: 'Стаж работы 15 лет'
     },
     {
-        id: 4,
+        id: 3,
         imageUrl: photos[3],
         typeName: 'Врач косметолог-дерматовенеролог',
         cardName: 'Чижова Александра Николаевна',
-        cardDate: 'Стаж работы 15 лет'
     },
     {
-        id: 5,
+        id: 4,
         imageUrl: photos[4],
         typeName: 'Косметолог',
         cardName: 'Пирогова Наталия Сергеевна',
-        cardDate: 'Стаж работы 15 лет'
     },
     {
-        id: 6,
+        id: 5,
         imageUrl: photos[5],
         typeName: 'Администратор центра',
         cardName: 'Якушина Валерия Евгеньевна',
-        cardDate: 'Стаж работы 15 лет'
     },
     {
-        id: 7,
+        id: 6,
         imageUrl: photos[6],
         typeName: 'Администратор центра',
         cardName: 'Королева Любовь Викторовна',
-        cardDate: 'Стаж работы 15 лет'
     },
 ];
 </script>

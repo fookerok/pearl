@@ -1,0 +1,182 @@
+---
+const images = import.meta.glob('../../assets/img/reviews/*.{png,jpg,jpeg,webp,PNG}', { eager: true });
+
+const rawPaths = Object.values(images).map((img: any) => {
+  return typeof img.default === 'string' ? img.default : img.default?.src;
+}).filter(Boolean);
+
+const gallery = rawPaths.length > 0 ? [...rawPaths, ...rawPaths] : [];
+---
+
+<section class="reviews-section">
+  <div class="slider-viewport">
+    <div class="slides-track" id="reviewsTrack">
+      {gallery.map((src, index) => (
+        <div class="slide">
+          <div class="slide-content">
+            <img src={src} alt={`Отзыв ${index + 1}`} loading="lazy" />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="slider-controls absolute">
+    <button id="prevReview" class="control-btn" aria-label="Назад">
+      <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button id="nextReview" class="control-btn" aria-label="Вперед">
+      <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+</section>
+
+<style>
+  .reviews-section {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+
+  .slider-viewport {
+    overflow: hidden;
+    cursor: grab;
+  }
+
+  .slider-viewport:active {
+    cursor: grabbing;
+  }
+
+  .slides-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 640px) {
+    .slide {
+      flex: 0 0 50%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .slide {
+      flex: 0 0 33.333%;
+    }
+  }
+
+  .slide-content img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .slider-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+    margin-top: 25px;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+  .control-btn {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+</style>
+
+<script>
+  function initSlider() {
+    const track = document.getElementById('reviewsTrack');
+    const nextBtn = document.getElementById('nextReview');
+    const prevBtn = document.getElementById('prevReview');
+    if (!track || !nextBtn || !prevBtn) return;
+
+    let currentIndex = 0;
+    let isMoving = false;
+
+    function getVisibleSlides() {
+      if (window.innerWidth >= 1024) return 3;
+      if (window.innerWidth >= 640) return 2;
+      return 1;
+    }
+
+    function updatePosition() {
+      const visibleSlides = getVisibleSlides();
+      const offset = currentIndex * (100 / visibleSlides);
+      track.style.transform = `translateX(-${offset}%)`;
+      
+      isMoving = true;
+      
+      setTimeout(() => {
+        isMoving = false;
+      }, 500); 
+    }
+
+    nextBtn.addEventListener('click', () => {
+      if (isMoving) return;
+
+      const totalSlides = track.querySelectorAll('.slide').length;
+      const visibleSlides = getVisibleSlides();
+      
+      if (currentIndex < totalSlides - visibleSlides) {
+        currentIndex++;
+      } else {
+        currentIndex = 0;
+      }
+      updatePosition();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (isMoving) return;
+
+      const totalSlides = track.querySelectorAll('.slide').length;
+      const visibleSlides = getVisibleSlides();
+
+      if (currentIndex > 0) {
+        currentIndex--;
+      } else {
+        currentIndex = totalSlides - visibleSlides;
+      }
+      updatePosition();
+    });
+
+    window.addEventListener('resize', () => {
+      const visibleSlides = getVisibleSlides();
+      const offset = currentIndex * (100 / visibleSlides);
+      track.style.transform = `translateX(-${offset}%)`;
+    });
+
+    let autoPlay = setInterval(() => {
+      if (!isMoving) nextBtn.click();
+    }, 5000);
+
+    track.parentElement?.addEventListener('mouseenter', () => clearInterval(autoPlay));
+    track.parentElement?.addEventListener('mouseleave', () => {
+      autoPlay = setInterval(() => {
+        if (!isMoving) nextBtn.click();
+      }, 5000);
+    });
+  }
+
+  initSlider();
+  document.addEventListener('astro:after-swap', initSlider);
+</script>

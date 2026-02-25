@@ -32,7 +32,7 @@ const slides = [img1, img2];
 <style lang="scss">
 .hero-slider {
 	overflow: hidden;
-	max-height: 850px;
+	max-height: 700px;
 	.slide {
 		width: 100%;
 		position: relative;

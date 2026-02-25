@@ -1,8 +1,15 @@
 ---
 import BaseLayout from '../layouts/Layout.astro';
-import ReviewsPage from '../components/pages/Reviews-page.vue';
+import ReviewsList from '../components/elements/ReviewsList.astro';
+import YandexReviews from '../components/elements/YandexReviews.vue';
+import ReviewsPhoto from '../components/elements/ReviewsPhoto.astro';
 ---
 
 <BaseLayout title="Отзывы">
-  <ReviewsPage />
+  <div class="container !mt-12">
+    <h2 class="section__title !mb-12">Отзывы наших клиентов</h2>
+    <ReviewsList/>
+    <ReviewsPhoto/>
+    <YandexReviews/>
+  </div>
 </BaseLayout>

@@ -19,13 +19,14 @@
 	}
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 	.btn-link{
 		color: white;
 		background-color: $primary;
 		padding: 13px 25px;
 		text-transform: uppercase;
 		font-size: 0.875rem;
+		cursor: pointer;
 		&:hover{
 			background-color: darken($primary, 10%);
 			transition: background-color .2s ease;

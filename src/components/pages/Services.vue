@@ -29,9 +29,7 @@ export default {
                 { title: 'Инъекционная косметология', link: 'services/injectable' },
                 { title: 'Нитевой лифтинг Aptos', link: 'services/lifting-aptos' },
                 { title: 'Подарочный сертификат', link: 'services/certificate' },
-                { title: 'Процедуры препаратами Favori', link: 'services/favori' },
                 { title: 'Ферменотерапия', link: 'services/enzyme' },
-                { title: 'Экзосомы', link: 'services/exosomes' },
                 { title: 'Эстетическая косметология', link: 'services/aesthetic' }
             ]
         }
