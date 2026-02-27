@@ -113,7 +113,7 @@ const slides = [
 		.swiper-button-next, .swiper-button-prev{
 			width: 30px;
 			height: 30px;
-			margin: 0 21px !important;
+			margin: 0 5px !important;
 			svg{
 				width: 5.79px;
 				height: 12.92px; 
@@ -121,7 +121,7 @@ const slides = [
 		}
 		.hero-slider {
 			.slide-content {
-				top: 20%;
+				top: 25%;
 				left: 50%;
 				transform: translateX(-50%);
 				h2{
