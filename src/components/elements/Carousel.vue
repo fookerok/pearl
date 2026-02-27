@@ -122,7 +122,7 @@ const slides = [
 		.hero-slider {
 			.slide-content {
 				top: 20%;
-				left: 40%;
+				left: 50%;
 				transform: translateX(-50%);
 				h2{
 					font-size: 2rem;
